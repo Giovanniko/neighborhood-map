@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Neighborhood Map</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="author" content="Jonathan Koefman">
+        <meta name="description" content="Udacity FEND project #5">
+		<script src='libs/jquery.min.js'></script>
+		<script src='libs/knockout-3.4.2.js'> </script>
+		<script src="js/app.js"></script>
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+    <body>
+		<header>
+			<div class="head">
+				<div id="coatofarmsOviedo">
+					<img id="oviedo" src="img/Coat_of_Arms_of_Oviedo.png" title="Coat of arms of Oviedo" alt="Coat of arms of Oviedo"/>
+				</div>
+				<div id="headertitle" title="Mountains around Oviedo">
+					<h1>Oviedo, ES</h1>
+				</div>
+				<div id="coatofarmsPrincipesa">
+					<img id="principesa" src="img/Escudo_del_Príncipe_de_Asturias_90h.png" title="Coat of arms of the Princess of Asturias" alt="Coat of arms of the Princess of Asturias"/>
+				</div>
+			</div>
+		</header>
+		<hr>
+		<div class="container">
+		<!-- input section to search for locations of interest -->
+			<section id="input" class="row">
+				<h2 id="searchLabel">Search: </h2>
+				<input type="search" name="q" data-bind="value: searchText, valueUpdate: 'afterkeydown'" placeholder="  type for favorites..." id="searchText" autocomplete='on'>
+				<span id="list-icon" class="openwebicons-tosdr" title="Toggle Favorites" data-bind="click: toggle"></span>
+			</section>
+			<hr>
+			<!-- Results Area -->
+			<section id="results" class="flex-container">
+				<div id="column1">
+					<div id="resultsList" data-bind= "visible: toggleList">
+						<h3 class="sectionTitle">Local Favorites<span>...type to search</span></h3>
+						<ul id="list" data-bind="template: {name:'filteredList', foreach:testArray}"></ul>
+					</div>
+					<script type="text/html" id="filteredList">
+						<li data-bind="attr: {id: id}">
+							<strong data-bind="text: name"></strong>
+						</li>
+						<hr>
+					</script>
+					<hr id="togo">
+				</div>
+				<div id="column2">
+					<!-- Streetview -->
+					<div id="panorama" data-bind="visible: togglePano">
+					</div>
+					<!-- Button rack of options -->
+					<hr>
+						<div id="buttonRack">
+							<input type="button" value="Clear Streetview Markers" id="clearSvMarkersButton" data-bind="click: emptyStreetviewMarkerArray">
+							<input type="button" value="Toggle Streetview" id="streetViewToggleButton" data-bind="click: streetViewToggle">
+							<input type="button" value="Clear Foursquare Markers" id="clearFsqMarkersButton" data-bind="click: emptyFoursquareMarkerArray">
+							<input type="button" value="Toggle Map" id="mapToggleButton" data-bind="click: mapToggle">
+						</div>
+					<hr>
+					<!-- Google map section -->
+					<div id="map" data-bind="visible: toggleMap">
+					</div>
+					<hr>
+				</div>
+			</section>
+		</div>
+	<script defer src = "https://maps.googleapis.com/maps/api/js?&key=AIzaSyAMrVj6I_6cXo7DF5ienNCjvj1seozxvbU&libraries=places,drawing,geometry&v=3&region=ES">
+    </script>
+	</body>
+</html>
