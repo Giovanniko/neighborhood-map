@@ -31,7 +31,8 @@
 		<!-- input section to search for locations of interest -->
 			<section id="input" class="row">
 				<h2 id="searchLabel">Search: </h2>
-				<input type="search" name="q" data-bind="value: searchText, valueUpdate: 'afterkeydown'" placeholder="  type for favorites..." id="searchText" autocomplete='on'>
+				<!-- <input type="search" name="q" data-bind="value: searchText, valueUpdate: 'afterkeydown'" placeholder="  type for favorites..." id="searchText" autocomplete='off'> -->
+				<input type="search" name="q" data-bind="textInput: searchText, valueUpdate: 'afterkeydown'" placeholder="  type for favorites..." id="searchText" autocomplete='off'><!-- BETTR THAN BINDING TO VALUE ONLY -->
 				<span id="list-icon" class="openwebicons-tosdr" title="Toggle Favorites" data-bind="click: toggle"></span>
 			</section>
 			<hr>
@@ -40,7 +41,8 @@
 				<div id="column1">
 					<div id="resultsList" data-bind= "visible: toggleList">
 						<h3 class="sectionTitle">Local Favorites<span>...type to search</span></h3>
-						<ul id="list" data-bind="template: {name:'filteredList', foreach:testArray}"></ul>
+						<!-- <ul id="list" data-bind="template: {name:'filteredList', foreach:testArray}"></ul> --><!-- ORIGINAL WORKING CODE -->
+						<ul id="list" data-bind="template: {name:'filteredList', foreach:search}"></ul><!-- UPDATED TO WORK WITH KO.COMPUTED -->
 					</div>
 					<script type="text/html" id="filteredList">
 						<li data-bind="attr: {id: id}">
@@ -64,13 +66,13 @@
 						</div>
 					<hr>
 					<!-- Google map section -->
-					<div id="map" data-bind="visible: toggleMap">
+					<div id="map" class="map-canvas" data-bind="visible: toggleMap">
 					</div>
 					<hr>
 				</div>
 			</section>
 		</div>
-	<script defer src = "https://maps.googleapis.com/maps/api/js?&key=AIzaSyAMrVj6I_6cXo7DF5ienNCjvj1seozxvbU&libraries=places,drawing,geometry&v=3&region=ES">
+	<script async defer src = "https://maps.googleapis.com/maps/api/js?&key=AIzaSyAMrVj6I_6cXo7DF5ienNCjvj1seozxvbU&libraries=places,drawing,geometry&v=3&region=ES&callback=letsGo" onerror="oops()">
     </script>
 	</body>
 </html>

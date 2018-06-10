@@ -97,7 +97,7 @@ margin: 4px 0px;
 	height: 21px;
 }
 
-#map {
+.map-canvas {
   cursor: pointer;
   margin: 3px;
   bottom:0px;

@@ -1,5 +1,7 @@
 ## Neighborhood Map
 ### Introduction: 
+To get started please run up index.html in your favorite browser.
+
 This project required that the map should be of an area near where you live or a neighborhood of your choosing. A list of your favorites should be filterable with user input and provide additional information when clicked.
 
 The purpose of this project was to use concepts from `Knockout` and a 3rd party API. The `MVVP` design structure of `Knockout` would introduce students to more advanced code structuring techniques. The interactive portion of `Google Maps` and the other 3rd party `API` would provide first-hand experience integrating external data sources from the web. 
